@@ -1,0 +1,112 @@
+$inactiveDays: #3C3844;
+
+.calendar {
+  background-color: black;
+  border-radius: 10px;
+  padding: 60px;
+
+  --side-padding: 20px; // padding to be applied to the side of the calendar
+  --border-radius: 34px; // border-radius of the main calendar shell
+  --accent-br: 15px; // border-radius for accents under dates on hover
+
+  width: 380px;
+
+  select {
+    background-color: inherit;
+    color: white;
+    padding: 15px 20px;
+    width: 100px;
+    cursor: pointer;
+  }
+
+
+  &__buttons {
+    background-color: #fff;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 15px;
+  }
+
+  &__opts {
+    border-top-left-radius: var(--border-radius);
+    border-top-right-radius: var(--border-radius);
+    padding: 20px var(--side-padding);
+    display: flex;
+    justify-content: center;
+  }
+
+  &__days {
+    padding: 0 var(--side-padding) 10px;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+
+    & > div {
+      text-align: center;
+      font: {
+        weight: bold;
+        size: 11px;
+      }
+      color: white;
+    }
+  }
+
+  &__dates {
+    padding: 10px var(--side-padding);
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+  }
+
+  &__date {
+    color: #c5c8ca;
+    --height: calc(400px / 6 - var(--side-padding));
+
+    text-align: center;
+    height: var(--height);
+    line-height: var(--height);
+    font: {
+      weight: 600;
+      size: 1.02rem;
+    }
+    cursor: pointer;
+    position: relative;
+
+    &--grey {
+      color: #3C3844;
+      cursor: not-allowed;
+    }
+
+    &--selected {
+      color: white;
+      opacity: 70%;
+      background-color: #2B662E;
+      border-radius: 50%;
+
+      &::before {
+        background-color: #ffeaec;
+        border-radius: 0px;
+      }
+    }
+
+    span {
+      position: relative;
+      z-index: 1;
+    }
+  }
+}
+
+select,
+button {
+  font: {
+    family: inherit;
+    weight: 700;
+    size: 1.02rem;
+  }
+  outline: none;
+  border: 0;
+  padding: 15px 20px;
+}
+
+h1 {
+  margin-bottom: 0;
+  color: white;
+}
