@@ -7,6 +7,7 @@ import { CalendarComponent } from './calendar/calendar.component';
 import { HourPickerComponent } from './hour-picker/hour-picker.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SetUpMeetingComponent } from './set-up-meeting/set-up-meeting.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { SetUpMeetingComponent } from './set-up-meeting/set-up-meeting.component
     CalendarComponent,
     HourPickerComponent,
     NavbarComponent,
-    SetUpMeetingComponent
+    SetUpMeetingComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
