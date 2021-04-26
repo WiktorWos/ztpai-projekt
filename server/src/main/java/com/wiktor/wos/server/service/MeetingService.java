@@ -6,10 +6,12 @@ import com.wiktor.wos.server.service.dto.AddMeetingDTO;
 import com.wiktor.wos.server.service.dto.MeetingDTO;
 import com.wiktor.wos.server.service.exception.EntityNotFoundException;
 import com.wiktor.wos.server.service.mapper.MeetingMapper;
+import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
 import java.util.List;
 
+@Service
 public class MeetingService {
 
     private MeetingRepository meetingRepository;

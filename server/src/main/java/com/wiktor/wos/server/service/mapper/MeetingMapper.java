@@ -8,9 +8,10 @@ import org.mapstruct.Mapping;
 @Mapper(componentModel = "spring")
 public interface MeetingMapper extends EntityMapper<Meeting, MeetingDTO> {
 
-    @Mapping(source = "userID", target = "user.id")
+    @Mapping(source = "userId", target = "user.id")
     Meeting toEntity(MeetingDTO meetingDTO);
 
-    @Mapping(source = "meeting.user.id", target = "userID")
+    @Mapping(source = "meeting.user.id", target = "userId")
     MeetingDTO toDto(Meeting meeting);
+
 }
