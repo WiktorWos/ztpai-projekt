@@ -65,7 +65,7 @@ public class Meeting {
         return hourEnd;
     }
 
-    public void setDuration(LocalTime hourEnd) {
+    public void setHourEnd(LocalTime hourEnd) {
         this.hourEnd = hourEnd;
     }
 

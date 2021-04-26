@@ -5,27 +5,16 @@ import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-public class MeetingDTO {
+public class AddMeetingDTO {
 
-    private Long id;
-
+    @NotNull
     private LocalDate meetingDate;
 
+    @NotNull
     private LocalTime hourStart;
 
+    @NotNull
     private LocalTime hourEnd;
-
-    private Timestamp createdAt;
-
-    private Long userId;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public LocalDate getMeetingDate() {
         return meetingDate;
@@ -51,19 +40,13 @@ public class MeetingDTO {
         this.hourEnd = hourEnd;
     }
 
-    public Timestamp getCreatedAt() {
-        return createdAt;
-    }
+    public MeetingDTO convertToMeetingDTO() {
+        MeetingDTO dto = new MeetingDTO();
+        dto.setCreatedAt(new Timestamp(System.currentTimeMillis()));
+        dto.setHourEnd(this.hourEnd);
+        dto.setHourStart(this.hourStart);
+        dto.setMeetingDate(this.meetingDate);
 
-    public void setCreatedAt(Timestamp createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public Long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Long userId) {
-        this.userId = userId;
+        return dto;
     }
 }
