@@ -2,6 +2,7 @@ package com.wiktor.wos.server.config.security;
 
 import com.wiktor.wos.server.entity.User;
 import com.wiktor.wos.server.repository.UserRepository;
+import com.wiktor.wos.server.service.CustomUserDetailsService;
 import com.wiktor.wos.server.service.MyUserDetailsService;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -14,11 +15,11 @@ import javax.servlet.http.HttpServletRequest;
 @Component
 public class JwtTokenProvider {
 
-    private final MyUserDetailsService userDetailsService;
+    private final CustomUserDetailsService userDetailsService;
 
     private final UserRepository userRepository;
 
-    public JwtTokenProvider(MyUserDetailsService userDetailsService, UserRepository userRepository) {
+    public JwtTokenProvider(CustomUserDetailsService userDetailsService, UserRepository userRepository) {
         this.userDetailsService = userDetailsService;
         this.userRepository = userRepository;
     }

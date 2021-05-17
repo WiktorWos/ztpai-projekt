@@ -1,12 +1,19 @@
 package com.wiktor.wos.server.entity;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "users")
-public class User {
+public class User implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,13 +30,28 @@ public class User {
     @Column(name = "token", nullable = true)
     private String token;
 
-    @OneToOne(mappedBy = "user")
-    private UserDetails userDetails;
+    @Column(name = "first_name", nullable = false)
+    @NotNull
+    private String firstName;
+
+    @Column(name = "last_name", nullable = false)
+    @NotNull
+    private String lastName;
 
     @OneToMany(mappedBy = "user")
     private List<Meeting> meetings;
 
+    @Transient
+    private final Set<GrantedAuthority> authorities;
+
     public User() {
+        authorities = new HashSet<>();
+        authorities.add(new SimpleGrantedAuthority("USER"));
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return this.authorities;
     }
 
     public Long getId() {
@@ -48,10 +70,6 @@ public class User {
         this.email = email;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
     public void setPassword(String password) {
         this.password = password;
     }
@@ -64,11 +82,49 @@ public class User {
         this.token = token;
     }
 
-    public UserDetails getUserDetails() {
-        return userDetails;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setUserDetails(UserDetails userDetails) {
-        this.userDetails = userDetails;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    @Override
+    public String getPassword() {
+        return this.password;
+    }
+
+    @Override
+    public String getUsername() {
+        return this.email;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
     }
 }
