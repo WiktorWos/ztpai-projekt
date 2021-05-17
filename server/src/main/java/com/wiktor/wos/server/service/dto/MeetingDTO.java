@@ -1,40 +1,23 @@
-package com.wiktor.wos.server.entity;
+package com.wiktor.wos.server.service.dto;
 
-import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-@Entity
-@Table(name = "meetings")
-public class Meeting {
+public class MeetingDTO {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "meeting_date", nullable = false)
     private LocalDate meetingDate;
 
-    @Column(name = "hour_start", nullable = false)
     private LocalTime hourStart;
 
-    @Column(name = "hour_end", nullable = false)
     private LocalTime hourEnd;
 
-    @Column(name = "created_at", nullable = false)
     private Timestamp createdAt;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "user_id")
-    private User user;
-
-    @OneToOne(mappedBy = "meeting")
-    private SetUpMeeting setUpMeeting;
-
-    public Meeting() {
-    }
+    private Long userId;
 
     public Long getId() {
         return id;
@@ -76,19 +59,11 @@ public class Meeting {
         this.createdAt = createdAt;
     }
 
-    public User getUser() {
-        return user;
+    public Long getUserId() {
+        return userId;
     }
 
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public SetUpMeeting getSetUpMeeting() {
-        return setUpMeeting;
-    }
-
-    public void setSetUpMeeting(SetUpMeeting setUpMeeting) {
-        this.setUpMeeting = setUpMeeting;
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 }
