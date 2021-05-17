@@ -45,7 +45,9 @@ public class MeetingController {
     private UserDTO getAuthUseDTO() {
         UserDTO dto = new UserDTO();
         dto.setId(1L);
-        dto.setName("user");
+        dto.setFirstName("user");
+        dto.setEmail("email");
+        dto.setLastName("user");
         return dto;
     }
 

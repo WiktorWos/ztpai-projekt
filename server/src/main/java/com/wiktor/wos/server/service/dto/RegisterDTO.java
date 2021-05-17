@@ -1,22 +1,20 @@
 package com.wiktor.wos.server.service.dto;
 
-public class UserDTO {
+import javax.validation.constraints.NotNull;
 
-    public Long id;
+public class RegisterDTO {
 
-    public String firstName;
+    @NotNull
+    private String firstName;
 
-    public String lastName;
+    @NotNull
+    private String lastName;
 
-    public String email;
+    @NotNull
+    private String email;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
+    @NotNull
+    private String password;
 
     public String getFirstName() {
         return firstName;
@@ -41,4 +39,13 @@ public class UserDTO {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 }
+
