@@ -12,9 +12,9 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "username", nullable = false, unique = true)
+    @Column(name = "email", nullable = false, unique = true)
     @NotNull
-    private String username;
+    private String email;
 
     @Column(name = "password", nullable = false)
     @NotNull
@@ -40,12 +40,12 @@ public class User {
         this.id = id;
     }
 
-    public String getLogin() {
-        return username;
+    public String getEmail() {
+        return email;
     }
 
-    public void setLogin(String username) {
-        this.username = username;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPassword() {
@@ -62,5 +62,13 @@ public class User {
 
     public void setToken(String token) {
         this.token = token;
+    }
+
+    public UserDetails getUserDetails() {
+        return userDetails;
+    }
+
+    public void setUserDetails(UserDetails userDetails) {
+        this.userDetails = userDetails;
     }
 }
