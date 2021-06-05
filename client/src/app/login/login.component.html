@@ -6,16 +6,48 @@
         Sign up
       </h1>
       <div class="form-container">
-        <form>
+        <form
+          name="form"
+          (ngSubmit)="onSubmit(f)"
+          #f="ngForm"
+        >
           <br>
           <br>
           <span class="subtitle">Username:</span>
           <br>
-          <input type="text" name="username" value="">
+          <input
+            type="text"
+            id="email"
+            name="email"
+            [(ngModel)]="form.username"
+            required
+            email
+            #username="ngModel"
+          />
+          <div *ngIf="username.invalid && (username.dirty || username.touched)">
+            <div class="error" *ngIf="username.errors.required">
+              Email is required!
+            </div>
+            <div class="error" *ngIf="username.errors.email">
+              The email should be in valid format!
+            </div>
+          </div>
           <br>
           <span class="subtitle">Password:</span>
           <br>
-          <input type="password" name="password" value="">
+          <input type="password"
+                 placeholder="Password"
+                 id="password"
+                 name="password"
+                 [(ngModel)]="form.password"
+                 #password="ngModel"
+                 required
+          />
+          <div *ngIf="password.invalid && (password.dirty || password.touched)">
+            <div class="error" *ngIf="password.errors.required">
+              Password is required!
+            </div>
+          </div>
           <br><br>
           <input type="submit" value="SUBMIT" class="submit-btn">
         </form>
