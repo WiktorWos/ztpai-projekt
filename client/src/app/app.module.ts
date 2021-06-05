@@ -15,6 +15,7 @@ import { LoginComponent } from './login/login.component';
 
 import { authInterceptorProviders } from './_helpers/auth.interceptor';
 import { MeetingComponent } from './meeting/meeting.component';
+import { MeetingListComponent } from './meeting-list/meeting-list.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { MeetingComponent } from './meeting/meeting.component';
     NavbarComponent,
     SetUpMeetingComponent,
     LoginComponent,
-    MeetingComponent
+    MeetingComponent,
+    MeetingListComponent
   ],
   imports: [
     BrowserModule,
