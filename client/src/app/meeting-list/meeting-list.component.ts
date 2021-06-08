@@ -1,6 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import {MeetingService} from '../_services/meeting.service';
-import {Observable} from 'rxjs';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-meeting-list',
@@ -8,14 +6,11 @@ import {Observable} from 'rxjs';
   styleUrls: ['./meeting-list.component.scss']
 })
 export class MeetingListComponent implements OnInit {
-  meetings: any[];
+  @Input() meetings: any[];
 
-  constructor(private meetingService: MeetingService) { }
+  constructor() { }
 
   ngOnInit(): void {
-    this.meetingService.getMeetings(1).subscribe((data: any[]) => {
-      this.meetings = data;
-    });
   }
 
 }

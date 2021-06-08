@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {MeetingService} from '../_services/meeting.service';
 
 @Component({
   selector: 'app-calendar',
@@ -25,18 +26,32 @@ export class CalendarComponent implements OnInit {
   ];
 
   selectedMonth: number;
+  meetings: any[];
+  currentMonthMeetings: any[];
 
-  constructor() {
-    this.days = [];
-    this.prevDays = [];
+  meetingDays: number[];
+
+  @Output() meetingsOnClickedDay: EventEmitter<any[]> = new EventEmitter();
+
+  constructor(private meetingService: MeetingService) {
+    this.initArrays();
     this.date = new Date();
     this.selectedMonth = this.date.getMonth() + 1;
   }
 
-  ngOnInit(): void {
+  initArrays() {
     this.days = [];
     this.prevDays = [];
+    this.meetings = [];
+    this.currentMonthMeetings = [];
+    this.meetingDays = [];
+  }
+
+  ngOnInit(): void {
+    this.initArrays();
     const year = this.date.getFullYear();
+    this.fetchMeetings();
+    this.getCurrentMonthMeetings();
     this.renderDays(this.selectedMonth, year);
   }
 
@@ -64,6 +79,43 @@ export class CalendarComponent implements OnInit {
 
   onChangeObj(newObj) {
     this.selectedMonth = newObj;
+    this.meetingsOnClickedDay.emit([]);
     this.ngOnInit();
+  }
+
+  fetchMeetings(): void {
+    this.meetingService.getMeetings(1).subscribe((data: any[]) => {
+      this.meetings = data;
+      this.getCurrentMonthMeetings();
+    });
+  }
+
+  getCurrentMonthMeetings(): void {
+    this.meetings.forEach((meeting) => {
+      const meetingDate: Date = new Date(meeting.meetingDate);
+      if (this.isDateInCurrentMonth(meetingDate)) {
+        this.currentMonthMeetings.push(meeting);
+        this.meetingDays.push(meetingDate.getDate());
+      }
+    });
+  }
+
+  isDateInCurrentMonth(meetingDate): boolean {
+    const nextMonthDate: Date = new Date(this.date.getFullYear(), this.selectedMonth, 1);
+    const lastMonthDate: Date = new Date(this.date.getFullYear(), this.selectedMonth - 1, 0);
+    return meetingDate > this.date && meetingDate < nextMonthDate && meetingDate > lastMonthDate;
+  }
+
+  selectDay(event) {
+    const meetings = [];
+    const day: string = event.target.innerHTML;
+    this.currentMonthMeetings.forEach((meeting) => {
+      const meetingDate: Date = new Date(meeting.meetingDate);
+      const meetingDay: number = meetingDate.getDate();
+      if (meetingDay.toString() === day) {
+        meetings.push(meeting);
+      }
+    });
+    this.meetingsOnClickedDay.emit(meetings);
   }
 }

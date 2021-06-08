@@ -2,7 +2,8 @@
   <app-navbar></app-navbar>
 
   <div class="calendar-hour">
-    <app-calendar></app-calendar>
-    <app-hour-picker></app-hour-picker>
+    <app-calendar (meetingsOnClickedDay)="handleMeetingsOnClickedDay($event)"></app-calendar>
+    <app-meeting-list [meetings]="meetings"
+    ></app-meeting-list>
   </div>
 </body>

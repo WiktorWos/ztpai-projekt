@@ -6,10 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./set-up-meeting.component.scss']
 })
 export class SetUpMeetingComponent implements OnInit {
+  meetings: any[];
 
-  constructor() { }
+  constructor() {
+    this.meetings = [];
+  }
 
   ngOnInit(): void {
   }
 
+  handleMeetingsOnClickedDay(meetings: any[]) {
+    this.meetings = meetings;
+  }
 }
