@@ -1,0 +1,13 @@
+<div class="content">
+  <p>MY MEETINGS</p>
+  <div class="meetings">
+    <div *ngFor="let meeting of meetings">
+      <app-meeting
+        date={{meeting.meetingDate}}
+        hourStart={{meeting.hourStart}}
+        hourEnd={{meeting.hourEnd}}
+      >
+      </app-meeting>
+    </div>
+  </div>
+</div>

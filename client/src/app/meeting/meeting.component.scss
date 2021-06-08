@@ -1,0 +1,54 @@
+.meeting {
+  background-color: black;
+  width: 320px;
+  height: 110px;
+  color: #7A7585;
+  border: 1px solid #7A7585;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.content {
+  display: flex;
+  flex-direction: row;
+  width: 320px;
+  height: 110px;
+  justify-content: space-between;
+}
+
+.meeting-info {
+  margin-left: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.date {
+  margin-bottom: 10px;
+}
+
+.hour {
+  margin-bottom: 5px;
+}
+
+.data {
+  color: #faf7f0;
+  margin-left: 10px;
+}
+
+.dataGroup {
+  display: flex;
+}
+
+button {
+  width: 30%;
+  height: 40px;
+  border-radius: 10px;
+  background-color: #76A9FF;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 18px;
+  border: none;
+  margin-top: 35px;
+  margin-right: 10px;
+}
