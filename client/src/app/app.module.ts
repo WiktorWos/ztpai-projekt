@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import {HttpClientModule} from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { CalendarComponent } from './calendar/calendar.component';
 import { HourPickerComponent } from './hour-picker/hour-picker.component';
@@ -16,6 +16,8 @@ import { LoginComponent } from './login/login.component';
 import { authInterceptorProviders } from './_helpers/auth.interceptor';
 import { MeetingComponent } from './meeting/meeting.component';
 import { MeetingListComponent } from './meeting-list/meeting-list.component';
+import { AddMeetingFormComponent } from './add-meeting-form/add-meeting-form.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -26,13 +28,16 @@ import { MeetingListComponent } from './meeting-list/meeting-list.component';
     SetUpMeetingComponent,
     LoginComponent,
     MeetingComponent,
-    MeetingListComponent
+    MeetingListComponent,
+    AddMeetingFormComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]

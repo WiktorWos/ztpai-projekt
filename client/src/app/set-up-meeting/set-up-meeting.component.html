@@ -1,6 +1,5 @@
 <body>
   <app-navbar></app-navbar>
-
   <div class="calendar-hour">
     <app-calendar (meetingsOnClickedDay)="handleMeetingsOnClickedDay($event)"></app-calendar>
     <app-meeting-list [meetings]="meetings"
