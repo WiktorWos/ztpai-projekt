@@ -3,3 +3,12 @@
   justify-content: center;
   margin-top: 40px;
 }
+
+.form {
+  z-index: 10;
+  position: absolute;
+}
+
+.hide {
+  display: none;
+}

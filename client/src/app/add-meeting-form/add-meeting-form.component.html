@@ -1,0 +1,45 @@
+<div class="flex-container">
+  <div>
+    <h1>
+      Add meeting
+    </h1>
+    <div class="form-container">
+      <form
+        [formGroup]="meetingForm"
+        (ngSubmit)="onSubmit()"
+      >
+        <div *ngIf="hourStart.invalid || hourEnd.invalid || minuteStart.invalid || minuteEnd.invalid" class="error">
+          Select all values
+        </div>
+        <br>
+        <br>
+        <span class="subtitle">Start hour:</span>
+        <br>
+        <select formControlName="hourStart">
+          <option [ngValue]="null" disabled>Choose hour</option>
+          <option *ngFor="let hour of hours" [value]="hour">{{hour}}</option>
+        </select>
+        :
+        <select formControlName="minuteStart">
+          <option [ngValue]="null" disabled>Choose minute</option>
+          <option *ngFor="let minute of minutes" [value]="minute">{{minute}}</option>
+        </select>
+        <br>
+        <span class="subtitle">End hour:</span>
+        <br>
+
+        <select formControlName="hourEnd">
+          <option [ngValue]="null" disabled>Choose hour</option>
+          <option *ngFor="let hour of hours" [value]="hour">{{hour}}</option>
+        </select>
+        :
+        <select formControlName="minuteEnd">
+          <option [ngValue]="null" disabled>Choose minute</option>
+          <option *ngFor="let minute of minutes" [value]="minute">{{minute}}</option>
+        </select>
+        <br><br>
+        <input type="submit" value="SUBMIT" class="submit-btn">
+      </form>
+    </div>
+  </div>
+</div>
