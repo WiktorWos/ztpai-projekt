@@ -1,0 +1,55 @@
+.content {
+  background-color: black;
+  border-radius: 10px;
+  padding: 60px;
+  width: 180px;
+  height: 450px;
+  position: relative;
+  margin-left: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #c5c8ca;
+}
+
+fa-icon {
+  font-size: 60px;
+}
+
+.text {
+  width: 80%;
+  text-align: center;
+  padding: 7px;
+  margin-top: 15px;
+  border-bottom: solid #c5c8ca 1px;
+  color: white;
+}
+
+button {
+  border: none;
+  color: black;
+  height: 45px;
+  border-radius: 10px;
+  margin-top: 40px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 14px;
+  box-shadow: 2px 2px 7px #38d39f70;
+
+  background: #38d39f;
+}
+
+.checkIcon {
+  font-size: 30px;
+  color: #38d39f70;
+  margin-right: 10px;
+}
+
+.successMsg {
+  margin-top: 5px;
+  color: #38d39f;
+  font-size: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

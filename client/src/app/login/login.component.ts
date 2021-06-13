@@ -29,12 +29,13 @@ export class LoginComponent implements OnInit {
       this.authService.login(this.form).subscribe(
         data => {
           this.tokenStorageService.saveToken(data.token);
-          this.tokenStorageService.saveUser(data);
+          this.saveUserData();
 
           this.isLoginFailed = false;
           this.isLoggedIn = true;
 
           this.router.navigate(['/setUp']);
+          console.log(this.tokenStorageService.getUser());
         },
         err => {
           this.errorMessage = err.message[0];
@@ -42,6 +43,12 @@ export class LoginComponent implements OnInit {
         }
       );
     }
+  }
+
+  saveUserData() {
+    this.authService.getUser().subscribe(data => {
+      this.tokenStorageService.saveUser(data);
+    });
   }
 
   reloadPage() {

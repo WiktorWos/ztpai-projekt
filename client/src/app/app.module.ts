@@ -18,6 +18,9 @@ import { MeetingComponent } from './meeting/meeting.component';
 import { MeetingListComponent } from './meeting-list/meeting-list.component';
 import { AddMeetingFormComponent } from './add-meeting-form/add-meeting-form.component';
 import { ProfileComponent } from './profile/profile.component';
+import { UserInfoComponent } from './user-info/user-info.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 
 @NgModule({
   declarations: [
@@ -30,14 +33,16 @@ import { ProfileComponent } from './profile/profile.component';
     MeetingComponent,
     MeetingListComponent,
     AddMeetingFormComponent,
-    ProfileComponent
+    ProfileComponent,
+    UserInfoComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FontAwesomeModule,
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]

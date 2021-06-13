@@ -1,0 +1,17 @@
+<div class="content">
+  <fa-icon [icon]="faUser"></fa-icon>
+  <div class="text">
+    {{user.email}}
+  </div>
+  <div class="text">
+    {{user.firstName}}
+  </div>
+  <div class="text">
+    {{user.lastName}}
+  </div>
+  <button (click)="copyToClipboard()">Copy link to set up meeting</button>
+  <div class="successMsg" *ngIf="isCopied">
+    <fa-icon class="checkIcon" [icon]="faCheck"></fa-icon>
+    Copied to clipboard.
+  </div>
+</div>
