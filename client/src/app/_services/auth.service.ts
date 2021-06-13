@@ -32,4 +32,8 @@ export class AuthService {
       tickets: []
     }, httpOptions);
   }
+
+  getUser(): Observable<any> {
+    return this.http.get(AUTH_API + 'user');
+  }
 }

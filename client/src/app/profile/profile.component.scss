@@ -1,0 +1,28 @@
+.content {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 87%;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 40px;
+}
+.meetings {
+  display: inherit;
+}
+.form {
+  z-index: 10;
+  position: absolute;
+}
+
+.hide {
+  display: none;
+}
+
+app-calendar {
+  margin-right: 10px;
+}
+
+app-user-info {
+  margin-right: 20px;
+}

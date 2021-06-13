@@ -24,6 +24,7 @@ public class MeetingService {
     }
 
     public void save(AddMeetingDTO addMeetingDTO) {
+        addMeetingDTO.setMeetingDate(addMeetingDTO.getMeetingDate().plusDays(1));
         MeetingDTO meetingDTO = addMeetingDTO.convertToMeetingDTO();
         Meeting meeting = meetingMapper.toEntity(meetingDTO);
 

@@ -22,4 +22,8 @@ export class MeetingService {
   postMeeting(body): Observable<any> {
     return this.http.post(MEETING_API, body, httpOptions);
   }
+
+  deleteMeeting(id): Observable<any> {
+    return this.http.delete(MEETING_API + id);
+  }
 }

@@ -1,0 +1,19 @@
+<app-navbar></app-navbar>
+<div class="content" *ngIf="!isAddMeetingClicked">
+  <app-user-info></app-user-info>
+  <div class="meetings">
+    <app-calendar
+      (meetingsOnClickedDay)="handleMeetingsOnClickedDay($event)"
+      (clickedDate)="handleClickedDate($event)"
+    ></app-calendar>
+    <app-meeting-list [meetings]="meetings"
+                      [date] = "date"
+                      (clickAddMeeting)="handleClickAddMeeting($event)"
+    ></app-meeting-list>
+  </div>
+</div>
+<app-add-meeting-form
+  [date]="date"
+  *ngIf="isAddMeetingClicked"
+  (submitMeeting)="handleAddMeetingSubmit()"
+></app-add-meeting-form>

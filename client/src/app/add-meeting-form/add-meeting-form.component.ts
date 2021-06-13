@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, HostListener, Input, OnInit, Output} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {MeetingService} from '../_services/meeting.service';
 
@@ -17,6 +17,7 @@ export class AddMeetingFormComponent implements OnInit {
   hours = [];
   minutes = [];
   @Input() date: string;
+  @Output() submitMeeting: EventEmitter<void> = new EventEmitter<void>();
   constructor(private meetingService: MeetingService) { }
 
   get hourStart(): any {
@@ -50,6 +51,8 @@ export class AddMeetingFormComponent implements OnInit {
         meetingDate: this.date
       };
 
+      console.log(body);
+
       this.meetingService.postMeeting(body).subscribe(
         data => {
           console.log('success');
@@ -58,6 +61,7 @@ export class AddMeetingFormComponent implements OnInit {
           console.log('error');
         }
       );
+      this.submitMeeting.emit();
     }
   }
 

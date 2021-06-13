@@ -1,8 +1,10 @@
 <div class="content">
-  <p>MY MEETINGS</p>
+  <p>MY MEETINGS {{date}}</p>
+  <button *ngIf="date != null" (click)="clickAddMeeting.emit(date)">ADD MEETING</button>
   <div class="meetings">
     <div *ngFor="let meeting of meetings">
       <app-meeting
+        id={{meeting.id}}
         date={{meeting.meetingDate}}
         hourStart={{meeting.hourStart}}
         hourEnd={{meeting.hourEnd}}
