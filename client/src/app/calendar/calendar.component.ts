@@ -32,6 +32,7 @@ export class CalendarComponent implements OnInit {
   meetingDays: number[];
 
   @Output() meetingsOnClickedDay: EventEmitter<any[]> = new EventEmitter();
+  @Output() clickedDate: EventEmitter<string> = new EventEmitter<string>();
 
   constructor(private meetingService: MeetingService) {
     this.initArrays();
@@ -100,22 +101,27 @@ export class CalendarComponent implements OnInit {
     });
   }
 
-  isDateInCurrentMonth(meetingDate): boolean {
+  isDateInCurrentMonth(meetingDate: Date): boolean {
     const nextMonthDate: Date = new Date(this.date.getFullYear(), this.selectedMonth, 1);
     const lastMonthDate: Date = new Date(this.date.getFullYear(), this.selectedMonth - 1, 0);
+    this.date.setHours(0);
     return meetingDate > this.date && meetingDate < nextMonthDate && meetingDate > lastMonthDate;
   }
 
   selectDay(event) {
     const meetings = [];
-    const day: string = event.target.innerHTML;
+    const day: number = event.target.innerHTML;
+    const dayString: string = day < 10 ? '0' + day : '' + day;
+    const monthString: string = this.selectedMonth < 10 ? '0' + this.selectedMonth : '' + this.selectedMonth;
+    const dateString = this.date.getFullYear() + '-' + monthString + '-' + dayString;
     this.currentMonthMeetings.forEach((meeting) => {
       const meetingDate: Date = new Date(meeting.meetingDate);
       const meetingDay: number = meetingDate.getDate();
-      if (meetingDay.toString() === day) {
+      if (meetingDay.toString() === day.toString()) {
         meetings.push(meeting);
       }
     });
     this.meetingsOnClickedDay.emit(meetings);
+    this.clickedDate.emit(dateString);
   }
 }

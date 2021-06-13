@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'app-meeting-list',
@@ -6,7 +6,9 @@ import {Component, Input, OnInit} from '@angular/core';
   styleUrls: ['./meeting-list.component.scss']
 })
 export class MeetingListComponent implements OnInit {
+  @Output() clickAddMeeting: EventEmitter<string> = new EventEmitter<string>();
   @Input() meetings: any[];
+  @Input() date: string;
 
   constructor() { }
 

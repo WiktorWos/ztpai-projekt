@@ -3,6 +3,7 @@
     <h1>
       Add meeting
     </h1>
+    <a class="close"  (click)="submitMeeting.emit()"></a>
     <div class="form-container">
       <form
         [formGroup]="meetingForm"
