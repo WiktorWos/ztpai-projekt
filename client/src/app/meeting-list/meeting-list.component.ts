@@ -7,12 +7,18 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 })
 export class MeetingListComponent implements OnInit {
   @Output() clickAddMeeting: EventEmitter<string> = new EventEmitter<string>();
+  @Output() clickSetUp: EventEmitter<number> = new EventEmitter<number>();
   @Input() meetings: any[];
   @Input() date: string;
+  @Input() isProfile = false;
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  handleSetUpClick(id) {
+    this.clickSetUp.emit(id);
   }
 
 }

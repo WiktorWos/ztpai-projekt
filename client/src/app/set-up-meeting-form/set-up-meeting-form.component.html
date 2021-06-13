@@ -1,0 +1,33 @@
+<div class="flex-container">
+  <div>
+    <h1>
+      Set up
+    </h1>
+    <a class="close"></a>
+    <div class="form-container">
+      <form
+        [formGroup]="setUpForm"
+        (ngSubmit)="onSubmit()"
+      >
+        <span class="subtitle">First name:</span>
+        <input
+          formControlName="firstName"
+          required
+        />
+        <span class="subtitle">Last name:</span>
+        <input
+          formControlName="lastName"
+          required
+        />
+        <span class="subtitle">Email:</span>
+        <input
+          formControlName="email"
+          required
+          email
+        />
+
+        <input type="submit" value="SUBMIT" class="submit-btn">
+      </form>
+    </div>
+  </div>
+</div>

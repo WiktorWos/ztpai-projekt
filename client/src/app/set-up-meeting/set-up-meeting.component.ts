@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SetUpMeetingComponent implements OnInit {
   meetings: any[];
+  meetingID: number;
+  isSetUpClicked = false;
 
   constructor() {
     this.meetings = [];
@@ -17,5 +19,10 @@ export class SetUpMeetingComponent implements OnInit {
 
   handleMeetingsOnClickedDay(meetings: any[]) {
     this.meetings = meetings;
+  }
+
+  handleSetUpClick(id) {
+    this.meetingID = id;
+    this.isSetUpClicked = true;
   }
 }

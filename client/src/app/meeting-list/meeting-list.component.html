@@ -1,6 +1,7 @@
 <div class="content">
-  <p>MY MEETINGS {{date}}</p>
-  <button *ngIf="date != null" (click)="clickAddMeeting.emit(date)">ADD MEETING</button>
+  <p *ngIf="isProfile">MY MEETINGS {{date}}</p>
+  <p *ngIf="!isProfile">SET UP {{date}}</p>
+  <button *ngIf="isProfile && date != null" (click)="clickAddMeeting.emit(date)">ADD MEETING</button>
   <div class="meetings">
     <div *ngFor="let meeting of meetings">
       <app-meeting
@@ -8,6 +9,8 @@
         date={{meeting.meetingDate}}
         hourStart={{meeting.hourStart}}
         hourEnd={{meeting.hourEnd}}
+        [isProfile]="isProfile"
+        (clickSetUp)="handleSetUpClick($event)"
       >
       </app-meeting>
     </div>
