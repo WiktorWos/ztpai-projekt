@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
+import {templateJitUrl} from '@angular/compiler';
 
 const MEETING_API = 'http://localhost:8080/api/meetings/';
 
@@ -21,6 +22,10 @@ export class MeetingService {
 
   postMeeting(body): Observable<any> {
     return this.http.post(MEETING_API, body, httpOptions);
+  }
+
+  setUpMeeting(body, id): Observable<any> {
+    return this.http.post(MEETING_API + 'setUp/' + id, body, httpOptions);
   }
 
   deleteMeeting(id): Observable<any> {

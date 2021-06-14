@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {MeetingService} from '../_services/meeting.service';
 
 @Component({
   selector: 'app-set-up-meeting-form',
@@ -15,7 +16,7 @@ export class SetUpMeetingFormComponent implements OnInit {
     email: new FormControl('', [Validators.required, Validators.email]),
   });
 
-  constructor() { }
+  constructor(private meetingService: MeetingService) { }
 
   ngOnInit(): void {
   }
@@ -33,6 +34,13 @@ export class SetUpMeetingFormComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.setUpForm.value);
+    this.meetingService.setUpMeeting(this.setUpForm.value, this.meetingID).subscribe(
+      data => {
+      console.log('success');
+    },
+      error => {
+        console.log(error);
+      }
+    );
   }
 }

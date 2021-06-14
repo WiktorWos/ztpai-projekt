@@ -29,7 +29,9 @@ public class SetUpMeetingService {
     }
 
     public void saveSetUpMeeting(MeetingDTO meeting, GuestDTO guest) {
-        guestService.saveGuest(guest);
+        if(guestService.getGuestByEmail(guest.getEmail()) == null) {
+            guestService.saveGuest(guest);
+        }
         SetUpMeeting setUpMeeting = new SetUpMeeting();
         setUpMeeting.setGuest(guestMapper.toEntity(guestService.getGuestByEmail(guest.getEmail())));
         setUpMeeting.setMeeting(meetingMapper.toEntity(meeting));
