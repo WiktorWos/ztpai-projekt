@@ -1,6 +1,9 @@
 <app-navbar></app-navbar>
 <div class="calendar-hour" *ngIf="!isSetUpClicked">
-  <app-calendar (meetingsOnClickedDay)="handleMeetingsOnClickedDay($event)"></app-calendar>
+  <app-calendar
+    (meetingsOnClickedDay)="handleMeetingsOnClickedDay($event)"
+    userID="{{userID}}"
+  ></app-calendar>
   <app-meeting-list [meetings]="meetings"
                     (clickSetUp)="handleSetUpClick($event)"
   ></app-meeting-list>

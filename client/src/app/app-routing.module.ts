@@ -8,7 +8,7 @@ import {SetUpMeetingFormComponent} from './set-up-meeting-form/set-up-meeting-fo
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
-  {path: 'setUp', component: SetUpMeetingComponent},
+  {path: 'setUp/:id', component: SetUpMeetingComponent},
   {path: 'profile', component: ProfileComponent},
   {path: 'user', component: SetUpMeetingFormComponent}
 ];

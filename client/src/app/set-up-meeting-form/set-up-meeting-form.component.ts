@@ -1,6 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {MeetingService} from '../_services/meeting.service';
+import {ActivatedRoute} from '@angular/router';
+import {faCheck} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-set-up-meeting-form',
@@ -9,6 +11,8 @@ import {MeetingService} from '../_services/meeting.service';
 })
 export class SetUpMeetingFormComponent implements OnInit {
   @Input() meetingID;
+  isSuccess = false;
+  faCheck = faCheck;
 
   setUpForm = new FormGroup({
     firstName: new FormControl('', [Validators.required]),
@@ -36,7 +40,7 @@ export class SetUpMeetingFormComponent implements OnInit {
   onSubmit() {
     this.meetingService.setUpMeeting(this.setUpForm.value, this.meetingID).subscribe(
       data => {
-      console.log('success');
+        this.isSuccess = true;
     },
       error => {
         console.log(error);

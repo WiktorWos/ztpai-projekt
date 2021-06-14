@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {MeetingService} from '../_services/meeting.service';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-set-up-meeting',
@@ -9,12 +11,17 @@ export class SetUpMeetingComponent implements OnInit {
   meetings: any[];
   meetingID: number;
   isSetUpClicked = false;
+  sub: any;
+  userID: number;
 
-  constructor() {
+  constructor(private route: ActivatedRoute) {
     this.meetings = [];
   }
 
   ngOnInit(): void {
+    this.sub = this.route.params.subscribe(params => {
+      this.userID = +params.id;
+    });
   }
 
   handleMeetingsOnClickedDay(meetings: any[]) {

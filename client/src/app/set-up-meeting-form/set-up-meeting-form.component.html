@@ -8,6 +8,7 @@
       <form
         [formGroup]="setUpForm"
         (ngSubmit)="onSubmit()"
+        *ngIf="!isSuccess"
       >
         <span class="subtitle">First name:</span>
         <input
@@ -28,6 +29,10 @@
 
         <input type="submit" value="SUBMIT" class="submit-btn">
       </form>
+      <div class="successMsg" *ngIf="isSuccess">
+        <fa-icon class="checkIcon" [icon]="faCheck"></fa-icon>
+        Meeting is set up.
+      </div>
     </div>
   </div>
 </div>

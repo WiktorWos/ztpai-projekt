@@ -17,7 +17,7 @@ export class MeetingService {
   constructor(private http: HttpClient) { }
 
   getMeetings(userID): Observable<any> {
-    return this.http.get(MEETING_API + 'user/1');
+    return this.http.get(MEETING_API + 'user/' + userID);
   }
 
   postMeeting(body): Observable<any> {

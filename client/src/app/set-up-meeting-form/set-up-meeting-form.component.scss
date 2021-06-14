@@ -69,3 +69,45 @@ form {
   justify-content: center;
   align-items: center;
 }
+
+.close {
+  color: white;
+  position: absolute;
+  //right: 32px;
+  //top: 32px;
+  width: 32px;
+  height: 32px;
+  opacity: 0.3;
+}
+.close:hover {
+  opacity: 1;
+}
+.close:before, .close:after {
+  position: absolute;
+  left: 15px;
+  content: ' ';
+  height: 33px;
+  width: 2px;
+  background-color: white;
+}
+.close:before {
+  transform: rotate(45deg);
+}
+.close:after {
+  transform: rotate(-45deg);
+}
+
+.checkIcon {
+  font-size: 30px;
+  color: #38d39f70;
+  margin-right: 10px;
+}
+
+.successMsg {
+  margin-top: 5px;
+  color: #38d39f;
+  font-size: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
