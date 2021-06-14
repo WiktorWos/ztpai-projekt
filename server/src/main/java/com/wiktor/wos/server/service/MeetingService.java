@@ -4,6 +4,7 @@ import com.wiktor.wos.server.entity.Meeting;
 import com.wiktor.wos.server.repository.MeetingRepository;
 import com.wiktor.wos.server.service.dto.AddMeetingDTO;
 import com.wiktor.wos.server.service.dto.MeetingDTO;
+import com.wiktor.wos.server.service.exception.BadRequestException;
 import com.wiktor.wos.server.service.exception.EntityNotFoundException;
 import com.wiktor.wos.server.service.mapper.MeetingMapper;
 import org.springframework.stereotype.Service;
@@ -25,6 +26,9 @@ public class MeetingService {
 
     public void save(AddMeetingDTO addMeetingDTO) {
         addMeetingDTO.setMeetingDate(addMeetingDTO.getMeetingDate().plusDays(1));
+        if(addMeetingDTO.getHourStart().isAfter(addMeetingDTO.getHourEnd())) {
+            throw new BadRequestException("Hours are not correct");
+        }
         MeetingDTO meetingDTO = addMeetingDTO.convertToMeetingDTO();
         Meeting meeting = meetingMapper.toEntity(meetingDTO);
 

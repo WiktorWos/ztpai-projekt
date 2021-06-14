@@ -8,18 +8,16 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: white;
 }
 .form-container {
   width: 500px;
-  height: 350px;
+  height: 450px;
   background-color: black;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   border-radius: 10px;
-  border: solid #38d39f70 1px;
 }
 
 h1 {
@@ -29,7 +27,7 @@ h1 {
   font-weight: 800;
 }
 
-select {
+input {
   border: none;
   border-bottom: solid #c5c8ca 1px;
   outline: none;
@@ -37,16 +35,17 @@ select {
   background: none;
   color: #c5c8ca;
   height: 35px;
-  width: 143px;
+  width: 300px;
 }
 
 .subtitle {
   font-size: 11px;
   color: white;
+  width: 100%;
+  text-align: left;
 }
 
 .submit-btn {
-  width: 300px;
   border: none;
   color: black;
   height: 45px;
@@ -62,7 +61,13 @@ select {
 
 .error {
   color: white;
-  text-align: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .close {
@@ -92,15 +97,15 @@ select {
   transform: rotate(-45deg);
 }
 
-.failIcon {
+.checkIcon {
   font-size: 30px;
-  color: red;
+  color: #38d39f70;
   margin-right: 10px;
 }
 
-.failMsg {
+.successMsg {
   margin-top: 5px;
-  color: red;
+  color: #38d39f;
   font-size: 14px;
   display: flex;
   justify-content: center;

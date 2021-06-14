@@ -1,8 +1,14 @@
-<body>
-  <app-navbar></app-navbar>
-  <div class="calendar-hour">
-    <app-calendar (meetingsOnClickedDay)="handleMeetingsOnClickedDay($event)"></app-calendar>
-    <app-meeting-list [meetings]="meetings"
-    ></app-meeting-list>
-  </div>
-</body>
+<app-navbar></app-navbar>
+<div class="calendar-hour" *ngIf="!isSetUpClicked">
+  <app-calendar
+    (meetingsOnClickedDay)="handleMeetingsOnClickedDay($event)"
+    userID="{{userID}}"
+  ></app-calendar>
+  <app-meeting-list [meetings]="meetings"
+                    (clickSetUp)="handleSetUpClick($event)"
+  ></app-meeting-list>
+</div>
+<app-set-up-meeting-form
+  [meetingID]="meetingID"
+  *ngIf="isSetUpClicked"
+></app-set-up-meeting-form>

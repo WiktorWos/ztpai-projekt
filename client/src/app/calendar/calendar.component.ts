@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {MeetingService} from '../_services/meeting.service';
 
 @Component({
@@ -7,6 +7,7 @@ import {MeetingService} from '../_services/meeting.service';
   styleUrls: ['./calendar.component.scss']
 })
 export class CalendarComponent implements OnInit {
+  @Input() userID: number;
   date: Date;
   days: number[];
   prevDays: number[];
@@ -85,7 +86,7 @@ export class CalendarComponent implements OnInit {
   }
 
   fetchMeetings(): void {
-    this.meetingService.getMeetings(1).subscribe((data: any[]) => {
+    this.meetingService.getMeetings(this.userID).subscribe((data: any[]) => {
       this.meetings = data;
       this.getCurrentMonthMeetings();
     });

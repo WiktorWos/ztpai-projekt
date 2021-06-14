@@ -1,6 +1,7 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {AddMeetingFormComponent} from '../add-meeting-form/add-meeting-form.component';
 import {CalendarComponent} from '../calendar/calendar.component';
+import {TokenStorageService} from '../_services/token-storage.service';
 
 @Component({
   selector: 'app-profile',
@@ -8,13 +9,15 @@ import {CalendarComponent} from '../calendar/calendar.component';
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
+  userID: any;
   meetings: any[];
   date: string;
   isAddMeetingClicked = false;
   @ViewChild(CalendarComponent) child: CalendarComponent;
-  constructor() { }
+  constructor(private tokenStorageService: TokenStorageService) { }
 
   ngOnInit(): void {
+    this.userID = this.tokenStorageService.getUser();
   }
 
   handleMeetingsOnClickedDay(meetings: any[]) {

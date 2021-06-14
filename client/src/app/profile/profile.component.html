@@ -5,10 +5,12 @@
     <app-calendar
       (meetingsOnClickedDay)="handleMeetingsOnClickedDay($event)"
       (clickedDate)="handleClickedDate($event)"
+      userID="{{userID.id}}"
     ></app-calendar>
     <app-meeting-list [meetings]="meetings"
                       [date] = "date"
                       (clickAddMeeting)="handleClickAddMeeting($event)"
+                      isProfile="true"
     ></app-meeting-list>
   </div>
 </div>

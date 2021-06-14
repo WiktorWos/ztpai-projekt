@@ -21,7 +21,8 @@
       </div>
     </div>
 
-    <button (click)="cancelMeeting()">Cancel</button>
+    <button (click)="cancelMeeting()" *ngIf="isProfile">Cancel</button>
+    <button (click)="clickSetUp.emit(id)" *ngIf="!isProfile">Set up</button>
 
   </div>
 </div>

@@ -20,6 +20,7 @@ import { AddMeetingFormComponent } from './add-meeting-form/add-meeting-form.com
 import { ProfileComponent } from './profile/profile.component';
 import { UserInfoComponent } from './user-info/user-info.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { SetUpMeetingFormComponent } from './set-up-meeting-form/set-up-meeting-form.component';
 
 
 @NgModule({
@@ -35,6 +36,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     AddMeetingFormComponent,
     ProfileComponent,
     UserInfoComponent,
+    SetUpMeetingFormComponent,
   ],
   imports: [
     BrowserModule,
