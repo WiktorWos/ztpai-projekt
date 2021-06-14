@@ -1,6 +1,7 @@
 import {Component, EventEmitter, HostListener, Input, OnInit, Output} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {MeetingService} from '../_services/meeting.service';
+import {faCross, faExclamationCircle} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-add-meeting-form',
@@ -16,6 +17,8 @@ export class AddMeetingFormComponent implements OnInit {
   });
   hours = [];
   minutes = [];
+  isFailed = false;
+  faFail = faExclamationCircle;
   @Input() date: string;
   @Output() submitMeeting: EventEmitter<void> = new EventEmitter<void>();
   constructor(private meetingService: MeetingService) { }
@@ -55,13 +58,14 @@ export class AddMeetingFormComponent implements OnInit {
 
       this.meetingService.postMeeting(body).subscribe(
         data => {
+          this.submitMeeting.emit();
           console.log('success');
         },
         err => {
+          this.isFailed = true;
           console.log('error');
         }
       );
-      this.submitMeeting.emit();
     }
   }
 

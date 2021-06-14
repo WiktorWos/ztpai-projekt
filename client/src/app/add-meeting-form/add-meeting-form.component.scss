@@ -91,3 +91,18 @@ select {
 .close:after {
   transform: rotate(-45deg);
 }
+
+.failIcon {
+  font-size: 30px;
+  color: red;
+  margin-right: 10px;
+}
+
+.failMsg {
+  margin-top: 5px;
+  color: red;
+  font-size: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

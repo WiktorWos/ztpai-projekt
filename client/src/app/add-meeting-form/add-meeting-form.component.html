@@ -41,6 +41,10 @@
         <br><br>
         <input type="submit" value="SUBMIT" class="submit-btn">
       </form>
+      <div class="failMsg" *ngIf="isFailed">
+        <fa-icon class="failIcon" [icon]="faFail"></fa-icon>
+        Provide correst hours.
+      </div>
     </div>
   </div>
 </div>
